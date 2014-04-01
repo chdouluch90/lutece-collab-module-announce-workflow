@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<!-- Task change announce publication status -->
+	<bean id="announce-workflow.taskChangeAnnounceStatusConfigDAO" class="fr.paris.lutece.plugins.announce.modules.workflow.business.TaskChangeAnnounceStatusConfigDAO"/>
+	<bean id="announce-workflow.taskChangeAnnounceStatus" class="fr.paris.lutece.plugins.announce.modules.workflow.service.TaskChangeAnnounceStatus" scope="prototype" />
+ 	<bean id="announce-workflow.taskChangeAnnounceStatusConfig" class="fr.paris.lutece.plugins.announce.modules.workflow.business.TaskChangeAnnounceStatusConfig" scope="prototype" />
+	<bean id="announce-workflow.taskChangeAnnounceStatusConfigService" class="fr.paris.lutece.plugins.workflowcore.service.config.TaskConfigService"
+		p:taskConfigDAO-ref="announce-workflow.taskChangeAnnounceStatusConfigDAO" />
+	<bean id="announce-workflow.taskTypeChangeAnnounceStatus" class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
+ 		p:key="taskChangeAnnounceStatus"
+ 		p:titleI18nKey="module.announce.workflow.task_change_announce_status.title"
+ 		p:beanName="announce-workflow.taskChangeAnnounceStatus"
+ 		p:configBeanName="announce-workflow.taskChangeAnnounceStatusConfig"
+ 		p:configRequired="true"
+ 		p:taskForAutomaticAction="true" />
+ 	<bean id="announce-workflow.changeAnnounceStatusTaskComponent" class="fr.paris.lutece.plugins.announce.modules.workflow.web.ChangeAnnounceStatusTaskComponent"
+		p:taskType-ref="announce-workflow.taskTypeChangeAnnounceStatus"
+		p:taskConfigService-ref="announce-workflow.taskChangeAnnounceStatusConfigService" />
+		
+	<bean id="announce-workflow.publicationDatePrerequisiteConfigDAO" class="fr.paris.lutece.plugins.announce.modules.workflow.business.prerequisite.PublicationDatePrerequisiteConfigDAO" />
+	<bean id="announce-workflow.publicationDatePrerequisite" class="fr.paris.lutece.plugins.announce.modules.workflow.service.prerequisite.PublicationDatePrerequisite" />
+</beans>

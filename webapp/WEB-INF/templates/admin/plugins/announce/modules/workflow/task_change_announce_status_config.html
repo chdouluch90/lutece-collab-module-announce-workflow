@@ -1,0 +1,9 @@
+<fieldset>
+	<legend>#i18n{module.announce.workflow.task_change_announce_status.title}</legend>
+	<div class="control-group">
+		<label class="control-label" for="status">#i18n{module.announce.workflow.task_change_announce_status.label_status} * </label>
+		<div class="controls">
+			<@combo name="status" items=refListStatus default_value=(config.publish?string)!'false' />
+		</div>
+	</div>
+</fieldset>
