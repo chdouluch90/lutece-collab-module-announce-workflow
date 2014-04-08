@@ -1,0 +1,45 @@
+<#include "/admin/util/editor/editor.html" />
+<fieldset>
+	<legend> #i18n{module.announce.workflow.task_notify_announce_config.title}</legend>
+	<div class="control-group">
+		<label class="control-label" for="sender_name">#i18n{module.announce.workflow.task_notify_announce_config.label_sender_name} * </label>
+		<div class="controls">
+			<input type="text" name="sender_name" id="" class="input-xxlarge" value="<#if config?exists && config.senderName?has_content>${config.senderName}<#else>${default_sender_name}</#if>" maxlength="255"/>
+			<span class="help-block">#i18n{module.announce.workflow.task_notify_announce_config.label_sender_name_comment}</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="sender_name">#i18n{module.announce.workflow.task_notify_announce_config.label_sender_email} * </label>
+		<div class="controls">
+			<input type="text" name="sender_email" id="" class="input-xxlarge" value="<#if config?exists && config.senderEmail?has_content>${config.senderEmail}<#else>${default_sender_name}</#if>" maxlength="255"/>
+			<span class="help-block">#i18n{module.announce.workflow.task_notify_announce_config.label_sender_name_comment}</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="recipients_cc">#i18n{module.announce.workflow.task_notify_announce_config.label_recipients_cc}</label>
+		<div class="controls">
+			<input type="text" name="recipients_cc" id="" class="input-xxlarge" value="${(config.recipientsCc)!}"  maxlength="255"/>
+			<span class="help-block">#i18n{module.announce.workflow.task_notify_announce_config.label_recipients_cc_comment}</span>
+		 </div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="recipients_bcc">#i18n{module.announce.workflow.task_notify_announce_config.label_recipients_bcc}</label>
+		<div class="controls">
+			<input type="text" name="recipients_bcc" id="" class="input-xxlarge" value="${(config.recipientsBcc)!}"  maxlength="255"/>
+			<span class="help-block">#i18n{module.announce.workflow.task_notify_announce_config.label_recipients_bcc_comment}</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="suject">#i18n{module.announce.workflow.task_notify_announce_config.label_subject} * </label>
+		<div class="controls">
+			<input type="text" name="subject" id="" class="input-xxlarge" value="${(config.subject)!}" maxlength="255"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="message">#i18n{module.announce.workflow.task_notify_announce_config.label_message} * </label>
+		<div class="controls">
+			<textarea class="richtext" id="message" name="message" rows="20" cols="90" >${(config.message)!}</textarea>
+		</div>
+	</div>
+</fieldset>
+<@initEditor />

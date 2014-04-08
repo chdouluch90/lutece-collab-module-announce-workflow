@@ -29,4 +29,24 @@
 		
 	<bean id="announce-workflow.publicationDatePrerequisiteConfigDAO" class="fr.paris.lutece.plugins.announce.modules.workflow.business.prerequisite.PublicationDatePrerequisiteConfigDAO" />
 	<bean id="announce-workflow.publicationDatePrerequisite" class="fr.paris.lutece.plugins.announce.modules.workflow.service.prerequisite.PublicationDatePrerequisite" />
+	
+	
+	
+	<!-- Task notify announce -->
+	<bean id="announce-workflow.taskNotifyAnnounceConfigDAO" class="fr.paris.lutece.plugins.announce.modules.workflow.business.TaskNotifyAnnounceConfigDAO"/>
+	<bean id="announce-workflow.taskNotifyAnnounce" class="fr.paris.lutece.plugins.announce.modules.workflow.service.TaskNotifyAnnounce" scope="prototype" />
+ 	<bean id="announce-workflow.taskNotifyAnnounceConfig" class="fr.paris.lutece.plugins.announce.modules.workflow.business.TaskNotifyAnnounceConfig" scope="prototype" />
+	<bean id="announce-workflow.taskNotifyAnnounceConfigService" class="fr.paris.lutece.plugins.announce.modules.workflow.service.AnnounceConfigService"
+		p:taskConfigDAO-ref="announce-workflow.taskNotifyAnnounceConfigDAO" />
+	<bean id="announce-workflow.taskTypeNotifyAnnounce" class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
+ 		p:key="taskNotifyAnnounce"
+ 		p:titleI18nKey="module.announce.workflow.task_notify_announce_config.title"
+ 		p:beanName="announce-workflow.taskNotifyAnnounce"
+ 		p:configBeanName="announce-workflow.taskNotifyAnnounceConfig"
+ 		p:configRequired="true"
+ 		p:taskForAutomaticAction="true" />
+ 	<bean id="announce-workflow.notifyAnnounceTaskComponent" class="fr.paris.lutece.plugins.announce.modules.workflow.web.NotifyAnnounceTaskComponent"
+		p:taskType-ref="announce-workflow.taskTypeNotifyAnnounce"
+		p:taskConfigService-ref="announce-workflow.taskNotifyAnnounceConfigService" />
+	
 </beans>
