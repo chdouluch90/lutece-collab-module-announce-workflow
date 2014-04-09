@@ -90,8 +90,14 @@ public class TaskChangeAnnounceStatus extends SimpleTask
 
             if ( announce != null )
             {
-                announce.setPublished( config.getPublish( ) );
-                AnnounceHome.update( announce );
+                if ( config.getPublish( ) )
+                {
+                    AnnounceHome.setPublished( announce );
+                }
+                else
+                {
+                    AnnounceHome.setSuspended( announce );
+                }
             }
         }
     }
