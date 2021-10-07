@@ -113,6 +113,7 @@ public class NotifyAnnounceTaskComponent extends NoFormTaskComponent
         TaskNotifyAnnounceConfig config = _taskNotifyAnnounceConfigService.findByPrimaryKey( task.getId( ) );
 
         ActionFilter filter = new ActionFilter( );
+        filter.setAutomaticReflexiveAction( false );
         Action action = _actionService.findByPrimaryKey( task.getAction( ).getId( ) );
         filter.setIdStateBefore( action.getStateAfter( ).getId( ) );
 
