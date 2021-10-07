@@ -139,13 +139,4 @@ public class ChangeAnnounceStatusTaskComponent extends NoFormTaskComponent
 
         return I18nService.getLocalizedString( config.getPublish( ) ? MESSAGE_LABEL_STATUS_PUBLISHED : MESSAGE_LABEL_STATUS_UNPUBLISHED, locale );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getTaskInformationXml( int nIdHistory, HttpServletRequest request, Locale locale, ITask task )
-    {
-        return null;
-    }
 }
