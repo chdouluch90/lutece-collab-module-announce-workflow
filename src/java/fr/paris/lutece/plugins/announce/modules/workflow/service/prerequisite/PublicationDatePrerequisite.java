@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,10 +51,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
- * Prerequisite that check that an announce has been publicated for longer than
- * a given number of days
+ * Prerequisite that check that an announce has been publicated for longer than a given number of days
  */
 public class PublicationDatePrerequisite implements IAutomaticActionPrerequisiteService
 {
@@ -120,8 +118,7 @@ public class PublicationDatePrerequisite implements IAutomaticActionPrerequisite
         Map<String, Object> model = new HashMap<String, Object>( );
         model.put( MARK_CONFIG, config );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_PULICATION_DATE_PREREQUISITE_CONFIG, locale,
-                model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_PULICATION_DATE_PREREQUISITE_CONFIG, locale, model );
 
         return template.getHtml( );
     }
@@ -130,8 +127,7 @@ public class PublicationDatePrerequisite implements IAutomaticActionPrerequisite
      * {@inheritDoc}
      */
     @Override
-    public boolean canActionBePerformed( int nIdResource, String strResourceType, IPrerequisiteConfig config,
-            int nIdAction )
+    public boolean canActionBePerformed( int nIdResource, String strResourceType, IPrerequisiteConfig config, int nIdAction )
     {
         if ( StringUtils.equals( Announce.RESOURCE_TYPE, strResourceType ) )
         {

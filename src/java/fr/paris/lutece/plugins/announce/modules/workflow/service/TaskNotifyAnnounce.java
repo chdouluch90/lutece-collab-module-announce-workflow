@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-
 
 /**
  * Workflow task to notify a user of an announce
@@ -130,22 +129,28 @@ public class TaskNotifyAnnounce extends SimpleTask
 
     /**
      * Send an email to a user
-     * @param announce The announce
-     * @param resourceHistory The resource history
-     * @param request The request
-     * @param locale The locale
-     * @param notifyAnnounceConfig The task configuration
-     * @param strEmail The address to send the email to
+     * 
+     * @param announce
+     *            The announce
+     * @param resourceHistory
+     *            The resource history
+     * @param request
+     *            The request
+     * @param locale
+     *            The locale
+     * @param notifyAnnounceConfig
+     *            The task configuration
+     * @param strEmail
+     *            The address to send the email to
      */
     @SuppressWarnings( "deprecation" )
-    public void sendEmail( Announce announce, ResourceHistory resourceHistory, HttpServletRequest request,
-            Locale locale, TaskNotifyAnnounceConfig notifyAnnounceConfig, String strEmail )
+    public void sendEmail( Announce announce, ResourceHistory resourceHistory, HttpServletRequest request, Locale locale,
+            TaskNotifyAnnounceConfig notifyAnnounceConfig, String strEmail )
     {
-        if ( ( notifyAnnounceConfig != null ) && ( resourceHistory != null )
-                && Announce.RESOURCE_TYPE.equals( resourceHistory.getResourceType( ) ) && ( announce != null ) )
+        if ( ( notifyAnnounceConfig != null ) && ( resourceHistory != null ) && Announce.RESOURCE_TYPE.equals( resourceHistory.getResourceType( ) )
+                && ( announce != null ) )
         {
-            if ( StringUtils.isEmpty( notifyAnnounceConfig.getSenderEmail( ) )
-                    || !StringUtil.checkEmail( notifyAnnounceConfig.getSenderEmail( ) ) )
+            if ( StringUtils.isEmpty( notifyAnnounceConfig.getSenderEmail( ) ) || !StringUtil.checkEmail( notifyAnnounceConfig.getSenderEmail( ) ) )
             {
                 notifyAnnounceConfig.setSenderEmail( MailService.getNoReplyEmail( ) );
             }
@@ -163,26 +168,23 @@ public class TaskNotifyAnnounce extends SimpleTask
             List<Response> listResponse = AnnounceHome.findListResponse( announce.getId( ), false );
             model.put( MARK_LIST_RESPONSE, listResponse );
 
-            String strSubject = AppTemplateService.getTemplateFromStringFtl( notifyAnnounceConfig.getSubject( ),
-                    locale, model ).getHtml( );
+            String strSubject = AppTemplateService.getTemplateFromStringFtl( notifyAnnounceConfig.getSubject( ), locale, model ).getHtml( );
 
-            boolean bHasRecipients = ( StringUtils.isNotBlank( notifyAnnounceConfig.getRecipientsBcc( ) ) || StringUtils
-                    .isNotBlank( notifyAnnounceConfig.getRecipientsCc( ) ) );
+            boolean bHasRecipients = ( StringUtils.isNotBlank( notifyAnnounceConfig.getRecipientsBcc( ) )
+                    || StringUtils.isNotBlank( notifyAnnounceConfig.getRecipientsCc( ) ) );
 
-            String strContent = AppTemplateService.getTemplateFromStringFtl(
-                    AppTemplateService.getTemplate( TEMPLATE_TASK_NOTIFY_MAIL, locale, model ).getHtml( ), locale,
-                    model ).getHtml( );
+            String strContent = AppTemplateService
+                    .getTemplateFromStringFtl( AppTemplateService.getTemplate( TEMPLATE_TASK_NOTIFY_MAIL, locale, model ).getHtml( ), locale, model )
+                    .getHtml( );
 
             if ( bHasRecipients )
             {
-                MailService.sendMailHtml( strEmail, notifyAnnounceConfig.getRecipientsCc( ),
-                        notifyAnnounceConfig.getRecipientsBcc( ), notifyAnnounceConfig.getSenderName( ),
-                        notifyAnnounceConfig.getSenderEmail( ), strSubject, strContent );
+                MailService.sendMailHtml( strEmail, notifyAnnounceConfig.getRecipientsCc( ), notifyAnnounceConfig.getRecipientsBcc( ),
+                        notifyAnnounceConfig.getSenderName( ), notifyAnnounceConfig.getSenderEmail( ), strSubject, strContent );
             }
             else
             {
-                MailService.sendMailHtml( strEmail, notifyAnnounceConfig.getSenderName( ),
-                        notifyAnnounceConfig.getSenderEmail( ), strSubject, strContent );
+                MailService.sendMailHtml( strEmail, notifyAnnounceConfig.getSenderName( ), notifyAnnounceConfig.getSenderEmail( ), strSubject, strContent );
             }
         }
     }

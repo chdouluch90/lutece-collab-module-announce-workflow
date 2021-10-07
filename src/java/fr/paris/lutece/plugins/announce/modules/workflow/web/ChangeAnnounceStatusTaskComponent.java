@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-
 
 /**
  * ChangeAnnounceStatusTaskComponent
@@ -117,18 +116,15 @@ public class ChangeAnnounceStatusTaskComponent extends NoFormTaskComponent
         TaskChangeAnnounceStatusConfig config = _taskChangeAnnounceStatusConfigService.findByPrimaryKey( task.getId( ) );
 
         ReferenceList refListStatus = new ReferenceList( );
-        refListStatus.addItem( Boolean.FALSE.toString( ),
-                I18nService.getLocalizedString( MESSAGE_LABEL_STATUS_UNPUBLISHED, locale ) );
-        refListStatus.addItem( Boolean.TRUE.toString( ),
-                I18nService.getLocalizedString( MESSAGE_LABEL_STATUS_PUBLISHED, locale ) );
+        refListStatus.addItem( Boolean.FALSE.toString( ), I18nService.getLocalizedString( MESSAGE_LABEL_STATUS_UNPUBLISHED, locale ) );
+        refListStatus.addItem( Boolean.TRUE.toString( ), I18nService.getLocalizedString( MESSAGE_LABEL_STATUS_PUBLISHED, locale ) );
 
         Map<String, Object> model = new HashMap<String, Object>( );
 
         model.put( MARK_CONFIG, config );
         model.put( MARK_REF_LIST_STATUS, refListStatus );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_TASK_CHANGE_APPOINTMENT_STATUS_CONFIG, locale,
-                model );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_TASK_CHANGE_APPOINTMENT_STATUS_CONFIG, locale, model );
 
         return template.getHtml( );
     }
@@ -141,8 +137,7 @@ public class ChangeAnnounceStatusTaskComponent extends NoFormTaskComponent
     {
         TaskChangeAnnounceStatusConfig config = _taskChangeAnnounceStatusConfigService.findByPrimaryKey( task.getId( ) );
 
-        return I18nService.getLocalizedString( config.getPublish( ) ? MESSAGE_LABEL_STATUS_PUBLISHED
-                : MESSAGE_LABEL_STATUS_UNPUBLISHED, locale );
+        return I18nService.getLocalizedString( config.getPublish( ) ? MESSAGE_LABEL_STATUS_PUBLISHED : MESSAGE_LABEL_STATUS_UNPUBLISHED, locale );
     }
 
     /**

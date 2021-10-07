@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import fr.paris.lutece.plugins.announce.modules.workflow.service.AnnounceWorkflo
 import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfigDAO;
 import fr.paris.lutece.util.sql.DAOUtil;
 
-
 /**
  * 
  * TaskNotifyAnnounceConfigDAO
@@ -48,11 +47,9 @@ public class TaskNotifyAnnounceConfigDAO implements ITaskConfigDAO<TaskNotifyAnn
     private static final String SQL_QUERY_FIND_BY_PRIMARY_KEY = "SELECT id_task,sender_name,sender_email,subject,message,recipients_cc,recipients_bcc "
             + "FROM workflow_task_notify_announce_cf WHERE id_task=?";
     private static final String SQL_QUERY_INSERT = "INSERT INTO workflow_task_notify_announce_cf( "
-            + "id_task,sender_name,sender_email,subject,message,recipients_cc,recipients_bcc)"
-            + "VALUES (?,?,?,?,?,?,?)";
+            + "id_task,sender_name,sender_email,subject,message,recipients_cc,recipients_bcc)" + "VALUES (?,?,?,?,?,?,?)";
     private static final String SQL_QUERY_UPDATE = "UPDATE workflow_task_notify_announce_cf "
-            + " SET sender_name = ?, sender_email = ?, subject = ?, message = ?, recipients_cc = ?, recipients_bcc = ?"
-            + " WHERE id_task = ? ";
+            + " SET sender_name = ?, sender_email = ?, subject = ?, message = ?, recipients_cc = ?, recipients_bcc = ?" + " WHERE id_task = ? ";
     private static final String SQL_QUERY_DELETE = "DELETE FROM workflow_task_notify_announce_cf WHERE id_task = ? ";
 
     /**

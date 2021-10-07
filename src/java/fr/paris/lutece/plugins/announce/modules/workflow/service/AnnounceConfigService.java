@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,10 +38,8 @@ import fr.paris.lutece.plugins.workflowcore.service.config.TaskConfigService;
 
 import org.springframework.stereotype.Service;
 
-
 /**
- * Default implementation of the config service of tasks of module workflow
- * appointment.
+ * Default implementation of the config service of tasks of module workflow appointment.
  */
 @Service
 public class AnnounceConfigService extends TaskConfigService

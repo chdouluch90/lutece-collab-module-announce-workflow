@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import fr.paris.lutece.plugins.announce.modules.workflow.service.AnnounceWorkflo
 import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfigDAO;
 import fr.paris.lutece.util.sql.DAOUtil;
 
-
 /**
  * TaskChangeAnnounceStatusConfigDAO
  */
@@ -45,10 +44,8 @@ public class TaskChangeAnnounceStatusConfigDAO implements ITaskConfigDAO<TaskCha
 {
     private static final String SQL_QUERY_FIND_BY_PRIMARY_KEY = "SELECT id_task,announce_published "
             + "FROM workflow_task_change_announce_status_cf WHERE id_task=?";
-    private static final String SQL_QUERY_INSERT = "INSERT INTO workflow_task_change_announce_status_cf( "
-            + "id_task,announce_published)" + "VALUES (?,?)";
-    private static final String SQL_QUERY_UPDATE = "UPDATE workflow_task_change_announce_status_cf SET announce_published = ?"
-            + " WHERE id_task = ? ";
+    private static final String SQL_QUERY_INSERT = "INSERT INTO workflow_task_change_announce_status_cf( " + "id_task,announce_published)" + "VALUES (?,?)";
+    private static final String SQL_QUERY_UPDATE = "UPDATE workflow_task_change_announce_status_cf SET announce_published = ?" + " WHERE id_task = ? ";
     private static final String SQL_QUERY_DELETE = "DELETE FROM workflow_task_change_announce_status_cf WHERE id_task = ? ";
 
     /**

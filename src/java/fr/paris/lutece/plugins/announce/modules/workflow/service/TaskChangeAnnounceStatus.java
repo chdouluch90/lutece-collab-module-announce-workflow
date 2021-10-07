@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  * Workflow task to change the publication status of an announce
  */
@@ -79,11 +78,9 @@ public class TaskChangeAnnounceStatus extends SimpleTask
     public void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale )
     {
         ResourceHistory resourceHistory = _resourceHistoryService.findByPrimaryKey( nIdResourceHistory );
-        TaskChangeAnnounceStatusConfig config = _taskChangeAppointmentStatusConfigService.findByPrimaryKey( this
-                .getId( ) );
+        TaskChangeAnnounceStatusConfig config = _taskChangeAppointmentStatusConfigService.findByPrimaryKey( this.getId( ) );
 
-        if ( ( config != null ) && ( resourceHistory != null ) &&
-                Announce.RESOURCE_TYPE.equals( resourceHistory.getResourceType(  ) ) )
+        if ( ( config != null ) && ( resourceHistory != null ) && Announce.RESOURCE_TYPE.equals( resourceHistory.getResourceType( ) ) )
         {
             // We get the appointment to update
             Announce announce = AnnounceHome.findByPrimaryKey( resourceHistory.getIdResource( ) );
@@ -106,9 +103,9 @@ public class TaskChangeAnnounceStatus extends SimpleTask
      * {@inheritDoc}
      */
     @Override
-    public void doRemoveConfig(  )
+    public void doRemoveConfig( )
     {
-        _taskChangeAppointmentStatusConfigService.remove( this.getId(  ) );
+        _taskChangeAppointmentStatusConfigService.remove( this.getId( ) );
     }
 
     /**
@@ -117,13 +114,11 @@ public class TaskChangeAnnounceStatus extends SimpleTask
     @Override
     public String getTitle( Locale locale )
     {
-        TaskChangeAnnounceStatusConfig config = _taskChangeAppointmentStatusConfigService.findByPrimaryKey( this
-                .getId( ) );
+        TaskChangeAnnounceStatusConfig config = _taskChangeAppointmentStatusConfigService.findByPrimaryKey( this.getId( ) );
 
         if ( config != null )
         {
-            return I18nService.getLocalizedString( config.getPublish( ) ? MESSAGE_PUBLISH_ANNOUNCE
-                    : MESSAGE_UNPUBLISH_ANNOUNCE, locale );
+            return I18nService.getLocalizedString( config.getPublish( ) ? MESSAGE_PUBLISH_ANNOUNCE : MESSAGE_UNPUBLISH_ANNOUNCE, locale );
         }
 
         return StringUtils.EMPTY;

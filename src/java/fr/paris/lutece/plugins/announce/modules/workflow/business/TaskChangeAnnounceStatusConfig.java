@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.announce.modules.workflow.business;
 
 import fr.paris.lutece.plugins.workflowcore.business.config.TaskConfig;
 
-
 /**
  * TaskChangeAnnounceStatusConfig
  */
@@ -45,6 +44,7 @@ public class TaskChangeAnnounceStatusConfig extends TaskConfig
 
     /**
      * Get the status to set announces
+     * 
      * @return the status to set announces
      */
     public boolean getPublish( )
@@ -54,7 +54,9 @@ public class TaskChangeAnnounceStatusConfig extends TaskConfig
 
     /**
      * Set the status to the announces
-     * @param bPublished the status to set announces
+     * 
+     * @param bPublished
+     *            the status to set announces
      */
     public void setPublish( boolean bPublished )
     {

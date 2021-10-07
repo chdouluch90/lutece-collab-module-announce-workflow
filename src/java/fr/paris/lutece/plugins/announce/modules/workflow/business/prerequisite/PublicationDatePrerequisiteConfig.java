@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import fr.paris.lutece.plugins.workflowcore.business.prerequisite.DefaultPrerequ
 
 import javax.validation.constraints.Min;
 
-
 /**
  * Configuration of publication date prerequisite
  */
@@ -53,6 +52,7 @@ public class PublicationDatePrerequisiteConfig extends DefaultPrerequisiteConfig
 
     /**
      * Get the number of days to wait before executing the action
+     * 
      * @return The number of days to wait before executing the action
      */
     public int getNbDays( )
@@ -62,7 +62,9 @@ public class PublicationDatePrerequisiteConfig extends DefaultPrerequisiteConfig
 
     /**
      * Set the number of days to wait before executing the action
-     * @param nNbDays The number of days to wait before executing the action
+     * 
+     * @param nNbDays
+     *            The number of days to wait before executing the action
      */
     public void setNbDays( int nNbDays )
     {

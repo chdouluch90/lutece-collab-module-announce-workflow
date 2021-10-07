@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.announce.modules.workflow.business;
 
 import fr.paris.lutece.plugins.workflowcore.business.config.TaskConfig;
 
-
 /**
  * TaskNotifyAnnounceConfig
  */
@@ -50,6 +49,7 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Get the subject
+     * 
      * @return the subject of the message
      */
     public String getSubject( )
@@ -59,7 +59,9 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Set the subject of the message
-     * @param strSubject the subject of the message
+     * 
+     * @param strSubject
+     *            the subject of the message
      */
     public void setSubject( String strSubject )
     {
@@ -68,6 +70,7 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Get the message
+     * 
      * @return the message of the notification
      */
     public String getMessage( )
@@ -77,7 +80,9 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Set the message of the notification
-     * @param strMessage the message of the notification
+     * 
+     * @param strMessage
+     *            the message of the notification
      */
     public void setMessage( String strMessage )
     {
@@ -86,6 +91,7 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Get the sender name
+     * 
      * @return the sender name
      */
     public String getSenderName( )
@@ -95,7 +101,9 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Set the sender name
-     * @param strSenderName the sender name
+     * 
+     * @param strSenderName
+     *            the sender name
      */
     public void setSenderName( String strSenderName )
     {
@@ -104,6 +112,7 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Get the sender email
+     * 
      * @return the sender email
      */
     public String getSenderEmail( )
@@ -113,7 +122,9 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Set the sender email
-     * @param strSenderEmail the sender email
+     * 
+     * @param strSenderEmail
+     *            the sender email
      */
     public void setSenderEmail( String strSenderEmail )
     {
@@ -122,6 +133,7 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Returns the Recipient
+     * 
      * @return The Recipient
      */
     public String getRecipientsCc( )
@@ -131,7 +143,9 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Sets the Recipient
-     * @param strRecipient The Recipient
+     * 
+     * @param strRecipient
+     *            The Recipient
      */
     public void setRecipientsCc( String strRecipient )
     {
@@ -140,6 +154,7 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Returns the Recipient
+     * 
      * @return The Recipient
      */
     public String getRecipientsBcc( )
@@ -149,7 +164,9 @@ public class TaskNotifyAnnounceConfig extends TaskConfig
 
     /**
      * Sets the Recipient
-     * @param strRecipient The Recipient
+     * 
+     * @param strRecipient
+     *            The Recipient
      */
     public void setRecipientsBcc( String strRecipient )
     {

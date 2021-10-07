@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-
 
 /**
  * 
@@ -154,14 +153,16 @@ public class NotifyAnnounceTaskComponent extends NoFormTaskComponent
         {
             strError = FIELD_SENDER_EMAIL;
         }
-        else if ( StringUtils.isBlank( strSubject ) )
-        {
-            strError = FIELD_SUBJECT;
-        }
-        else if ( StringUtils.isBlank( strMessage ) )
-        {
-            strError = FIELD_MESSAGE;
-        }
+        else
+            if ( StringUtils.isBlank( strSubject ) )
+            {
+                strError = FIELD_SUBJECT;
+            }
+            else
+                if ( StringUtils.isBlank( strMessage ) )
+                {
+                    strError = FIELD_MESSAGE;
+                }
 
         if ( !StringUtil.checkEmail( strSenderEmail ) )
         {
@@ -170,10 +171,11 @@ public class NotifyAnnounceTaskComponent extends NoFormTaskComponent
 
         if ( !strError.equals( WorkflowUtils.EMPTY_STRING ) )
         {
-            Object[] tabRequiredFields = { I18nService.getLocalizedString( strError, locale ) };
+            Object [ ] tabRequiredFields = {
+                    I18nService.getLocalizedString( strError, locale )
+            };
 
-            return AdminMessageService.getMessageUrl( request, MESSAGE_MANDATORY_FIELD, tabRequiredFields,
-                    AdminMessage.TYPE_STOP );
+            return AdminMessageService.getMessageUrl( request, MESSAGE_MANDATORY_FIELD, tabRequiredFields, AdminMessage.TYPE_STOP );
         }
 
         TaskNotifyAnnounceConfig config = _taskNotifyAnnounceConfigService.findByPrimaryKey( task.getId( ) );
