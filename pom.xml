@@ -2,7 +2,7 @@
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
-        <version>3.0.12</version>
+        <version>5.1.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>plugin-workflow</artifactId>
-            <version>[4.1.0,)</version>
+            <version>[4.1.0,5.2.3]</version>
         </dependency>
     </dependencies>
     <properties>
